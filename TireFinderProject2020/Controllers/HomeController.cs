@@ -13,6 +13,7 @@ namespace TireFinderProject2020.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        //added comments for test
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
