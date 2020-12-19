@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TireFinderProject2020.Models;
 
 namespace TireFinderProject2020
 {
@@ -24,6 +25,11 @@ namespace TireFinderProject2020
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITireRepository, TireRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
