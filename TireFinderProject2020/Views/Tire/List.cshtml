@@ -11,10 +11,20 @@
         <h1>@Model.CurrentCategory</h1>
         @foreach (var tire in Model.Tires)
         {
-        <div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@tire.ImageThumbnailUrl" alt="image for tire shop" />
+                <div class="caption">
+                    @*c is for currency*@
+                    <h3 class="pull-right">@tire.Price.ToString("c")</h3>
+                    <h3>@tire.Name</h3>
+                    <p>@tire.Description</p>
+
+                </div>
+            </div>
             <h2>@tire.Name</h2>
-            @*c is for currency*@
-            <h3>@tire.Price.ToString("c")</h3>
+          
+
             <h4>@tire.Category.CategoryName</h4>
         </div>
         }
