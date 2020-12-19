@@ -45,7 +45,7 @@ namespace TireFinderProject2020
             app.UseRouting();
 
             app.UseAuthorization();
-
+            //adding a change comment to test a commit
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
