@@ -1,0 +1,23 @@
+﻿@model TireListViewModel 
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, inital-scale=1" />
+        <title>Tire Shop</title>
+    </head>
+    <body>
+        <h1>@Model.CurrentCategory</h1>
+        @foreach (var tire in Model.Tires)
+        {
+        <div>
+            <h2>@tire.Name</h2>
+            @*c is for currency*@
+            <h3>@tire.Price.ToString("c")</h3>
+            <h4>@tire.Category.CategoryName</h4>
+        </div>
+        }
+
+    </body>
+    </html>
