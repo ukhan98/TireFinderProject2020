@@ -31,8 +31,15 @@ namespace TireFinderProject2020.Controllers
             tireListViewModel.Tires = _tireRepository.GetAllTire;
             tireListViewModel.CurrentCategory = "BestSellers";
             return View(tireListViewModel); 
+        }
 
-        
+        public IActionResult Details(int id)
+        {
+            var tire = _tireRepository.GetTireById(id);
+            if (tire == null)
+                return NotFound();
+
+            return View(tire);
         }
 
 

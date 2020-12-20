@@ -10,7 +10,7 @@ namespace TireFinderProject2020.Models
         public int TireId { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
-        public decimal Price { get; set; }
+        public decimal  Price { get; set; }
         public String  ImageUrl { get; set; }
         public String ImageThumbnailUrl { get; set; }
         public bool IsOnSale { get; set; }
