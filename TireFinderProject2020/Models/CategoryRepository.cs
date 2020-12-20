@@ -7,15 +7,13 @@ namespace TireFinderProject2020.Models
 {
     public class CategoryRepository : ICategoryRepository
     {
-        public IEnumerable<Category> GetAllCategories => new List<Category>
+        private readonly AppDbContext _appDbContext;
+
+        public CategoryRepository(AppDbContext appDbContext)
         {
+            _appDbContext = appDbContext;
+        }
 
-            new Category{CategoryId=1, CategoryName="By Vehicle", CategoryDescription="Tires are Assorted by Vehicles" },
-
-            new Category{CategoryId=1, CategoryName="By Size", CategoryDescription="Tires are Assorted by Size" },
-
-            new Category{CategoryId=1, CategoryName="By Brand", CategoryDescription="Tires are Assorted by Brand" }
-             
-        };
+        public IEnumerable<Category> GetAllCategories => _appDbContext.Categories;
     }
 }
