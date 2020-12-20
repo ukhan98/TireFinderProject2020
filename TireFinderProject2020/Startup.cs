@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TireFinderProject2020.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 
 namespace TireFinderProject2020
@@ -27,12 +29,19 @@ namespace TireFinderProject2020
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                          options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddControllersWithViews();
-
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITireRepository, TireRepository>();
+            services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddRazorPages();
 
 
         }
@@ -52,9 +61,10 @@ namespace TireFinderProject2020
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             //adding a change comment to test a commit
             app.UseEndpoints(endpoints =>
